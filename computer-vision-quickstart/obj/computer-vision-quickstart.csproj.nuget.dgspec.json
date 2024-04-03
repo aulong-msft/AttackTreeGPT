@@ -1,0 +1,111 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
+        "projectName": "computer-vision-quickstart",
+        "projectPath": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
+        "packagesPath": "C:\\Users\\aulong\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\aulong\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Azure.AI.OpenAI": {
+              "target": "Package",
+              "version": "[1.0.0-beta.6, )"
+            },
+            "Azure.AI.TextAnalytics": {
+              "target": "Package",
+              "version": "[5.3.0, )"
+            },
+            "Azure.Identity": {
+              "target": "Package",
+              "version": "[1.10.2, )"
+            },
+            "Chroma": {
+              "target": "Package",
+              "version": "[0.60.1, )"
+            },
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
+            "FuzzySharp": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
+            "FuzzyStringMatch": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Microsoft.Azure.CognitiveServices.Language.TextAnalytics": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "Microsoft.Azure.CognitiveServices.Vision.ComputerVision": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Octokit": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "OpenAI": {
+              "target": "Package",
+              "version": "[1.7.2, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.407\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
