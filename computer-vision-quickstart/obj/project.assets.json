@@ -6121,11 +6121,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
+      "projectUniqueName": "C:\\Users\\aulong\\GitHub_Projects\\AttackTreeGPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
       "projectName": "computer-vision-quickstart",
-      "projectPath": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
+      "projectPath": "C:\\Users\\aulong\\GitHub_Projects\\AttackTreeGPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
       "packagesPath": "C:\\Users\\aulong\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\obj\\",
+      "outputPath": "C:\\Users\\aulong\\GitHub_Projects\\AttackTreeGPT\\computer-vision-quickstart\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aulong\\AppData\\Roaming\\NuGet\\NuGet.Config"

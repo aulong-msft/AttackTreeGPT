@@ -48,16 +48,6 @@ namespace ThreatModelGPT
             
             // Use OpenAI API to generate recommendations from the extracted text
             var recommendations = await GenerateListOfSecurityRecommendations(concatenatedString, openAiApiKey, openAiApiendpoint);
-
-         /*   List<string> securityBaselines = await GetSecurityBaselinesAsync(concatenatedString, githubUsername, githubPersonalAccessToken);
-            
-            foreach (string baseline in securityBaselines)
-            {
-                if (!string.IsNullOrWhiteSpace(baseline)) // Check if the baseline is not null, empty, or whitespace
-                {
-                    Console.WriteLine("SECURITY BASELINE FOR:" + baseline);
-                }
-            }*/
         }
 
         public static ComputerVisionClient Authenticate(string endpoint, string key)
@@ -144,9 +134,9 @@ namespace ThreatModelGPT
             List<string> recommendations = new List<string>();
             string prompt =
                 "Prompt 2:\n" +
-                "As a Amazon AWS security engineer specializing in threat model analysis and risk mitigation, you have been tasked with evaluating the security posture of various AWS services:\n" +
+                "As a Amazon AWS security engineer specializing in threat model analysis you are creating attack trees for each of the aws services provided\n" +
                 $"{text}\n" +
-                "Your objective is to identify service-specific security recommendations by leveraging AWS Security Basline documentation and AWS to find tailored security advice for each service.\n";
+                "Your objective is to create an attack tree for each service with the perspective of an adversary trying to hack into the system, you set a clear adversarial goal node and 3 leaf nodes which clearly show how you will acheive the goal node, please provide actionable and descriptive methos of hacking into the service to achieve the goal node. \n";
 
 
             OpenAIClient client = new OpenAIClient(new Uri(apiEndpoint), new AzureKeyCredential(apiKey));
@@ -176,7 +166,7 @@ namespace ThreatModelGPT
                 "Prompt 2:\n" +
                 "As a Amazon AWS security engineer specializing in threat model analysis and risk mitigation, you have been tasked with evaluating the security posture of various Amazon AWS services:\n" +
                 $"{text}\n" +
-                "Your objective is to identify service-specific security threats by leveraging Microsoft STRIDE threat modeling framework documentation and Microsoft docs to find tailored security advice for each service.\n";
+                "Your objective is to identify service-specific security threats with the list of services provided.\n";
 
 
             OpenAIClient client = new OpenAIClient(new Uri(apiEndpoint), new AzureKeyCredential(apiKey));
@@ -195,84 +185,6 @@ namespace ThreatModelGPT
             recommendations.Add(completion); // Add the completion to the list
 
             return recommendations;
-        }
-        /*static async Task<List<string>> GetSecurityBaselinesAsync(string services, string username, string personalAccessToken)
-        {
-            string owner = "MicrosoftDocs";
-            string repo = "SecurityBenchmarks";
-            string path = "Azure Offer Security Baselines/3.0";
-            string path2 = "Microsoft Cloud Security Benchmark/";
-            string path3 = "Azure Security Benchmark/3.0";
-
-            var client = new GitHubClient(new ProductHeaderValue("MyApp"));
-            var basicAuth = new Credentials(username, personalAccessToken); 
-            client.Credentials = basicAuth;
-
-            List<string> securityBaselines = new List<string>();
-            string[] individualServices = services.Split(',').Select(s => s.Trim()).ToArray();
-
-            // Find a security baseline for each recommendation from the OpenAI API
-            foreach (string individualService in individualServices)
-            {
-                // todo: add services to replace invalid strings
-
-                try
-                {
-                    string trimmedService = individualService.Trim();
-                    string content = await GetFileContentAsync(client, owner, repo, path, trimmedService);
-                    securityBaselines.Add(content);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Failed to fetch data for service: {individualService}, Error: {ex.Message}");
-                }
-            }
-
-            // Find the security baseline for the entire Azure Security Benchmark
-            try
-            {
-                string content = await GetFileContentAsync(client, owner, repo, path3, "Azure Security Benchmark");
-                securityBaselines.Add(content);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to fetch data for Azure Security Benchmark, Error: {ex.Message}");
-            }
-
-            // Find the security baseline for the entire Microsoft Cloud Security Benchmark
-            try
-            {
-                string content = await GetFileContentAsync(client, owner, repo, path2, "Microsoft_cloud_security_benchmark");
-                securityBaselines.Add(content);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to fetch data for Microsoft Cloud Security Benchmark, Error: {ex.Message}");
-            }
-
-            return securityBaselines;
-        }*/
-                
-        static async Task<string> GetFileContentAsync(GitHubClient client, string owner, string repo, string path, string service)
-        {
-            var contents = await client.Repository.Content.GetAllContentsByRef(owner, repo, path, "master");
-                        
-            foreach (var content in contents)
-            {
-                // Replace spaces with hyphens to match filename format
-                string formattedService = service.Replace(" ", "-").Replace(".", "").ToLower();
-                
-                if (content.Name.IndexOf(formattedService, StringComparison.OrdinalIgnoreCase) >= 0)
-                {
-                    // Construct the URL to the baseline file
-                    string baselineUrl = $" {service}: https://github.com/{owner}/{repo}/blob/master/{content.Path}";
-
-                    return baselineUrl;
-                }
-            }
-
-            // return empty string if the list isnt populated
-           return "";
         }
     }
 }  

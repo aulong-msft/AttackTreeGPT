@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qKBoplKC0Rk1hBaFyl4uo7rtzs9V3Dcq4LbaSh5N79+aFcy9emRtddwr+OFc4cUzuSr1pNNsJZF15SSVVvg2/Q==",
+  "dgSpecHash": "vOrGS/UMdwwXtmgrQ7+z5MOMaKV28WcrS3TyIaGDSEpeVOZdmxWGwj7hTVCaZrr4ZZCLVSBWHTR+xNZuOvp+Pw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aulong\\GitHub_Projects\\Threat-model-GPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
+  "projectFilePath": "C:\\Users\\aulong\\GitHub_Projects\\AttackTreeGPT\\computer-vision-quickstart\\computer-vision-quickstart.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aulong\\.nuget\\packages\\azure.ai.openai\\1.0.0-beta.6\\azure.ai.openai.1.0.0-beta.6.nupkg.sha512",
     "C:\\Users\\aulong\\.nuget\\packages\\azure.ai.textanalytics\\5.3.0\\azure.ai.textanalytics.5.3.0.nupkg.sha512",
