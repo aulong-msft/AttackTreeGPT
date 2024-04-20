@@ -1,6 +1,6 @@
-# ThreatModelGPT
+# Attack Tree GPT
  
-ThreatModelGPT is a C# program that uses Azure's Computer Vision and Azure OpenAI's GPT-4 to generate attack trees for AWS services as well as threats and mitigations for those services extracted from a provided image.
+Attack Tree GPT is a C# program that uses Azure's Computer Vision and Azure OpenAI's GPT-4 to generate attack trees for AWS services as well as threats and mitigations for those services extracted from a provided image.
 
 ## Prerequisites
  
