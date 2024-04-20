@@ -24,9 +24,7 @@ namespace ThreatModelGPT
             string computerVisionApiKey = Env.GetString("COMPUTER_VISION_API_KEY");
             string computerVisionApiEndpoint = Env.GetString("COMPUTER_VISION_API_ENDPOINT");
             string imageFilePath = Env.GetString("IMAGE_FILEPATH");
-            string githubUsername = Env.GetString("GITHUB_USERNAME");
-            string githubPersonalAccessToken = Env.GetString("GITHUB_PERSONAL_ACCESS_TOKEN");
-  
+        
             // Create a computer vision client to obtain text from a provided image
             ComputerVisionClient client = Authenticate(computerVisionApiEndpoint, computerVisionApiKey);
 
@@ -133,10 +131,10 @@ namespace ThreatModelGPT
             string engine = Env.GetString("CHAT_ENGINE");
             List<string> recommendations = new List<string>();
             string prompt =
-                "Prompt 2:\n" +
+                "Prompt 3:\n" +
                 "As a Amazon AWS security engineer specializing in threat model analysis you are creating attack trees for each of the aws services provided\n" +
                 $"{text}\n" +
-                "Your objective is to create an attack tree for each service with the perspective of an adversary trying to hack into the system, you set a clear adversarial goal node and 3 leaf nodes which clearly show how you will acheive the goal node, please provide actionable and descriptive methos of hacking into the service to achieve the goal node. \n";
+                "Ensure each attack tree has the perspective of an adversary trying to hack into the system, you set a clear adversarial goal node and leaf nodes \n";
 
 
             OpenAIClient client = new OpenAIClient(new Uri(apiEndpoint), new AzureKeyCredential(apiKey));
@@ -166,7 +164,7 @@ namespace ThreatModelGPT
                 "Prompt 2:\n" +
                 "As a Amazon AWS security engineer specializing in threat model analysis and risk mitigation, you have been tasked with evaluating the security posture of various Amazon AWS services:\n" +
                 $"{text}\n" +
-                "Your objective is to identify service-specific security threats with the list of services provided.\n";
+                "Your objective is to identify unique service-specific security threats with the list of services provided.\n";
 
 
             OpenAIClient client = new OpenAIClient(new Uri(apiEndpoint), new AzureKeyCredential(apiKey));
