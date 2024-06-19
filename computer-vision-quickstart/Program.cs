@@ -41,11 +41,11 @@ namespace ThreatModelGPT
             string concatenatedString = string.Join(",", listOfServices); // Using a space as delimiter
 
             // Use OpenAI API to generate threats from the extracted text
-
-            var threats =GenerateListOfSecurityThreats(concatenatedString, openAiApiKey, openAiApiendpoint);
+            var threats = await GenerateListOfSecurityThreats(concatenatedString, openAiApiKey, openAiApiendpoint);
             
             // Use OpenAI API to generate recommendations from the extracted text
-            var recommendations = await GenerateListOfSecurityRecommendations(concatenatedString, openAiApiKey, openAiApiendpoint);
+            Console.WriteLine("Generating Recommendations from the extracted text");
+            var recommendations = await GenerateListOfAttackTrees(concatenatedString, openAiApiKey, openAiApiendpoint);
         }
 
         public static ComputerVisionClient Authenticate(string endpoint, string key)
@@ -105,10 +105,9 @@ namespace ThreatModelGPT
 
        public static async Task<List<string>> GenerateListOfServices(string text, string apiKey, string apiEndpoint)
         {
-            string engine = "text-davinci-003";
+            string engine = Env.GetString("CHAT_ENGINE");
             List<string> recommendations = new List<string>(); 
             string prompt = $"Prompt 1: You are an Amazon AWS security engineer doing threat model analysis to identify and mitigate risk. Given the following text:\n{text}\n please find the relevant AWS Services and print them out. \n";
-
             OpenAIClient client = new OpenAIClient(new Uri(apiEndpoint), new AzureKeyCredential(apiKey));
 
             // Prompt tuning parameters
@@ -125,7 +124,7 @@ namespace ThreatModelGPT
 
             return recommendations; 
         }
-       public static async Task<List<string>> GenerateListOfSecurityRecommendations(string text, string apiKey, string apiEndpoint)
+       public static async Task<List<string>> GenerateListOfAttackTrees(string text, string apiKey, string apiEndpoint)
         {
             
             string engine = Env.GetString("CHAT_ENGINE");
@@ -143,7 +142,7 @@ namespace ThreatModelGPT
             Console.Write($"Input: {prompt}");
             CompletionsOptions completionsOptions = new CompletionsOptions();
             completionsOptions.Prompts.Add(prompt);
-            completionsOptions.MaxTokens = 2000;
+            completionsOptions.MaxTokens = 7000;
             completionsOptions.Temperature = 0.5f;
             completionsOptions.NucleusSamplingFactor = 0.5f;
 
@@ -154,8 +153,7 @@ namespace ThreatModelGPT
 
             return recommendations;
         }
-
-        public static async Task<List<string>> GenerateListOfSecurityThreats(string text, string apiKey, string apiEndpoint)
+         public static async Task<List<string>> GenerateListOfSecurityThreats(string text, string apiKey, string apiEndpoint)
         {
             
             string engine = Env.GetString("CHAT_ENGINE");
@@ -173,7 +171,7 @@ namespace ThreatModelGPT
             Console.Write($"Input: {prompt}");
             CompletionsOptions completionsOptions = new CompletionsOptions();
             completionsOptions.Prompts.Add(prompt);
-            completionsOptions.MaxTokens = 2000;
+            completionsOptions.MaxTokens = 7000;
             completionsOptions.Temperature = 0.5f;
             completionsOptions.NucleusSamplingFactor = 0.5f;
 
@@ -184,5 +182,6 @@ namespace ThreatModelGPT
 
             return recommendations;
         }
+
     }
 }  
